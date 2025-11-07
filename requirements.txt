@@ -1,5 +1,6 @@
 streamlit
-scikit-learn
-joblib
+google-generativeai
 pandas
 numpy
+scikit-learn
+
