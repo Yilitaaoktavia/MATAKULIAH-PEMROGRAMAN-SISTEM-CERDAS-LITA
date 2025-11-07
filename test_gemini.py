@@ -1,13 +1,15 @@
 import google.generativeai as genai
+import streamlit as st
 
-# Masukkan API key yang valid dari Google AI Studio
-genai.configure(api_key="MASUKKAN_API_KEY_KAMU_DI_SINI")
+# Konfigurasi API key
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
-# Gunakan model yang tersedia dan stabil
+# Pilih model yang stabil (bukan -latest)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-# Coba generate teks
-response = model.generate_content("Hai, aku Yilita! Apa kabar?")
-
-# Tampilkan hasil
-print(response.text)
+# Tes chat sederhana
+try:
+    response = model.generate_content(["Hai, aku Yilita! Apa kabar?"])
+    st.write(response.text)
+except Exception as e:
+    st.error(f"Terjadi error: {e}")
